@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Cartpage.scss';
+import  CartItem from '../../common/CartItem/CartItem'
 
 
 const Cart = (props) => {
@@ -8,7 +9,9 @@ const Cart = (props) => {
       <div>
         <h3>Cart</h3>
         <div>
-          <p>Cart</p>
+          <CartItem />
+          <CartItem />
+          <CartItem />
         </div>
       </div>
     </div>
