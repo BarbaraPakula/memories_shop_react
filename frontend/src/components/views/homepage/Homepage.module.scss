@@ -1,6 +1,15 @@
-@import '../../../styles/settings.scss';
+@import "../../../styles/settings.scss";
 
-// .root {
+.card {
+  display: flex;
+  justify-content: space-between;
+  //   flex-basis: 100%;
+  flex-wrap: wrap;
+  padding: 10px;
 
-
-// }
+  &__item {
+    flex-basis: 30%;
+    margin: 20px;
+    flex-grow: 1;
+  }
+}
