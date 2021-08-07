@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CartItem.module.scss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 const propTypes = {};

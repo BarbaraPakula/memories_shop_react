@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProductCard.module.scss';
 import { Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
@@ -19,6 +20,8 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -42,9 +45,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const ProductCard = ({ imageUrl, description, price, name, productId }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
