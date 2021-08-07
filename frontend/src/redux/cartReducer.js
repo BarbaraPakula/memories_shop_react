@@ -5,7 +5,7 @@ export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const CART_RESET = 'CART_RESET';
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${id}`);
+  const { data } = await axios.get(`http://localhost:8000/api/products/${id}`);
 
   dispatch({
     type: ADD_TO_CART,

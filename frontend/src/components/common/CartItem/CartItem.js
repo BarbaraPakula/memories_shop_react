@@ -3,15 +3,9 @@ import styles from './CartItem.module.scss';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-const propTypes = {};
+// const propTypes = {};
 
-const defaultProps = {
-  imageUrl:
-    'https://images.pexels.com/photos/2693208/pexels-photo-2693208.png?auto=compress&cs=tinysrgb&dpr=2&w=500',
-  name: 'Heaven',
-  price: 120,
-  countInStock: 3,
-};
+
 
 const CartItem = (item, qtyChangeHandler, removeHandler) => {
   return (
@@ -47,7 +41,7 @@ const CartItem = (item, qtyChangeHandler, removeHandler) => {
   );
 };
 
-CartItem.propTypes = propTypes;
-CartItem.defaultProps = defaultProps;
+// CartItem.propTypes = propTypes;
+// CartItem.defaultProps = defaultProps;
 
 export default CartItem;

@@ -41,12 +41,6 @@ const Cart = (props) => {
 
   return (
     <div className={styles.root}>
-      <div>
-        <h3>Cart to remove  Statycznie do podglądu</h3>
-        <div>
-          <CartItem />
-        </div>
-      </div>
       <>
         <div className='cartscreen'>
           <div className='cartscreen__left'>
@@ -60,9 +54,12 @@ const Cart = (props) => {
               cartItems.map((item) => (
                 <CartItem
                   key={item.product}
-                  item={item}
+                  // item={item}
                   qtyChangeHandler={qtyChangeHandler}
                   removeHandler={removeFromCartHandler}
+                  name={item.name}
+                  price={item.price}
+                  imageUrl={item.imageUrl}
                 />
               ))
             )}
