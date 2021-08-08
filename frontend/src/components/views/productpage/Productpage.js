@@ -40,7 +40,7 @@ const Productpage = ({ match, history }) => {
             <div className={styles.left__info}>
               <p className={styles.left__name}>{product.name}</p>
               <p>Price: ${product.price}</p>
-              <p>Description: {product.description}</p>
+              <p> {product.description}</p>
             </div>
           </div>
           <div className={styles.productpage__right}>
