@@ -30,7 +30,8 @@
     "husky": "^7.0.1",
     "mongoose": "^5.13.5",
     "node-sass": "^6.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "stripe": "^8.168.0"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",

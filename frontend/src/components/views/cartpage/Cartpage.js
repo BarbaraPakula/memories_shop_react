@@ -3,6 +3,7 @@ import styles from "./Cartpage.scss";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import CheckoutButton from "../../common/checkoutButton/CheckoutButton";
 
 // Components
 import CartItem from "../../common/CartItem/CartItem";
@@ -66,7 +67,7 @@ const Cart = () => {
           <p>${getCartSubTotal()}</p>
         </div>
         <div>
-          <button>Proceed to Order </button>
+          <CheckoutButton />
         </div>
       </div>
     </div>
