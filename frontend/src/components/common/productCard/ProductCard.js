@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
@@ -103,6 +103,14 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
       </Collapse>
     </Card>
   );
+};
+
+ProductCard.propTypes = {
+  imageUrl: propTypes.string,
+  description: propTypes.string,
+  price: propTypes.number,
+  name: propTypes.string,
+  productId: propTypes.string,
 };
 
 export default ProductCard;

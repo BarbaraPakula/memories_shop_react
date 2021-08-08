@@ -1,13 +1,10 @@
-import React from 'react';
-import styles from './CartItem.module.scss';
-// import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-// const propTypes = {};
+import React from "react";
+import styles from "./CartItem.module.scss";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
-
-
-const CartItem = (item, qtyChangeHandler, removeHandler) => {
+const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
   return (
     <div className={styles.cartitem}>
       <div className={styles.cartitem__image}>
@@ -41,7 +38,10 @@ const CartItem = (item, qtyChangeHandler, removeHandler) => {
   );
 };
 
-// CartItem.propTypes = propTypes;
-// CartItem.defaultProps = defaultProps;
+CartItem.propTypes = {
+  item: PropTypes.object,
+  qtyChangeHandler: PropTypes.func,
+  removeHandler: PropTypes.func,
+};
 
 export default CartItem;

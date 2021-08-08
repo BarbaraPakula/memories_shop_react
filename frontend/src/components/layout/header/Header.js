@@ -1,12 +1,10 @@
-import React from 'react';
-// import styles from './Header.module.scss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { makeStyles } from '@material-ui/core/styles';
-
-import { ShoppingCart } from '@material-ui/icons';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
-
-import { Link } from 'react-router-dom';
+import { makeStyles } from "@material-ui/core/styles";
+import { ShoppingCart } from "@material-ui/icons";
+import AcUnitIcon from "@material-ui/icons/AcUnit";
 import {
   AppBar,
   Toolbar,
@@ -14,7 +12,7 @@ import {
   Badge,
   MenuItem,
   Typography,
-} from '@material-ui/core';
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,8 +26,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header = (props) => {
+export const Header = () => {
   const classes = useStyles();
+  const cart = useSelector((state) => state.cart);
+  console.log("mmm cart:", cart);
+  const { cartItems } = cart;
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
 
   return (
     <div className={classes.root}>
@@ -59,7 +63,7 @@ export const Header = (props) => {
               aria-label="Show cart items"
               color="inherit"
             >
-              <Badge badgeContent={'10'} color="secondary">
+              <Badge badgeContent={getCartCount()} color="secondary">
                 <ShoppingCart />
               </Badge>
             </IconButton>

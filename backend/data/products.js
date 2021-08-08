@@ -29,7 +29,7 @@ const products = [
   {
     name: 'Heaven',
     imageUrl:
-      'https://images.pexels.com/photos/2693208/pexels-photo-2693208.png?auto=compress&cs=tinysrgb&dpr=2&w=500',
+      'https://images.pexels.com/photos/4765691/pexels-photo-4765691.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
     description:
       'The more you praise and celebrate your life, the more there is in life to celebrate',
     price: 50,
