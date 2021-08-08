@@ -1,59 +1,86 @@
-import axios from 'axios';
+import axios from "axios";
+//actions names
+const GET_PRODUCTS_REQUEST = "GET_PRODUCTS_REQUEST";
+const GET_PRODUCTS_SUCCESS = "GET_PRODUCTS_SUCCESS";
+const GET_PRODUCTS_FAIL = "GET_PRODUCTS_FAIL";
 
-export const GET_PRODUCTS_REQUEST = 'GET_PRODUCTS_REQUEST';
-export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
-export const GET_PRODUCTS_FAIL = 'GET_PRODUCTS_FAIL';
+const GET_PRODUCT_DETAILS_REQUEST = "GET_PRODUCT_DETAILS_REQUEST";
+const GET_PRODUCT_DETAILS_SUCCESS = "GET_PRODUCT_DETAILS_SUCCESS";
+const GET_PRODUCT_DETAILS_FAIL = "GET_PRODUCT_DETAILS_FAIL";
+const GET_PRODUCT_DETAILS_RESET = "GET_PRODUCT_DETAILS_RESET";
 
-export const GET_PRODUCT_DETAILS_REQUEST = 'GET_PRODUCT_DETAILS_REQUEST';
-export const GET_PRODUCT_DETAILS_SUCCESS = 'GET_PRODUCT_DETAILS_SUCCESS';
-export const GET_PRODUCT_DETAILS_FAIL = 'GET_PRODUCT_DETAILS_FAIL';
-export const GET_PRODUCT_DETAILS_RESET = 'GET_PRODUCT_DETAILS_RESET';
+/* action creators */
+export const getProductsReques = (payload) => ({
+  payload,
+  type: GET_PRODUCTS_REQUEST,
+});
+export const getProductsSuccess = (payload) => ({
+  payload,
+  type: GET_PRODUCTS_SUCCESS,
+});
+export const getProductsFail = (payload) => ({
+  payload,
+  type: GET_PRODUCTS_FAIL,
+});
+export const getProductDetailsRequest = (payload) => ({
+  payload,
+  type: GET_PRODUCT_DETAILS_REQUEST,
+});
+export const getProductDetailsSuccess = (payload) => ({
+  payload,
+  type: GET_PRODUCT_DETAILS_SUCCESS,
+});
+export const getProductDetailsFail = (payload) => ({
+  payload,
+  type: GET_PRODUCT_DETAILS_FAIL,
+});
+export const getProductDetailsReset = (payload) => ({
+  payload,
+  type: GET_PRODUCT_DETAILS_RESET,
+});
+/* thunk creators */
 
 export const getProducts = () => async (dispatch) => {
   try {
-    dispatch({ type: GET_PRODUCTS_REQUEST });
+    dispatch(getProductsReques());
 
-    const { data } = await axios.get('http://localhost:8000/api/products');
-
-    dispatch({
-      type: GET_PRODUCTS_SUCCESS,
-      payload: data,
-    });
+    const { data } = await axios.get("http://localhost:8000/api/products");
+    dispatch(getProductsSuccess(data));
   } catch (error) {
-    dispatch({
-      type: GET_PRODUCTS_FAIL,
-      payload:
+    dispatch(
+      getProductsFail(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
-    });
+          : error.message
+      )
+    );
   }
 };
 
 export const getProductDetails = (id) => async (dispatch) => {
   try {
-    dispatch({ type: GET_PRODUCT_DETAILS_REQUEST });
+    dispatch(getProductDetailsRequest());
 
-    const { data } = await axios.get(`http://localhost:8000/api/products/${id}`);
-
-    dispatch({
-      type: GET_PRODUCT_DETAILS_SUCCESS,
-      payload: data,
-    });
+    const { data } = await axios.get(
+      `http://localhost:8000/api/products/${id}`
+    );
+    dispatch(getProductDetailsSuccess(data));
   } catch (error) {
-    dispatch({
-      type: GET_PRODUCT_DETAILS_FAIL,
-      payload:
+    dispatch(
+      getProductDetailsFail(
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.message,
-    });
+          : error.message
+      )
+    );
   }
 };
 
 export const removeProductDetails = () => (dispatch) => {
-  dispatch({ type: GET_PRODUCT_DETAILS_RESET });
+  dispatch(getProductDetailsRequest());
 };
+
+/* reducer */
 
 export const getProductsReducer = (state = { products: [] }, action) => {
   switch (action.type) {

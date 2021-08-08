@@ -26,9 +26,8 @@ const Homepage = () => {
           <h2>{error}</h2>
         ) : (
           products.map((product) => (
-            <div className={styles.card__item}>
+            <div key={product._id} className={styles.card__item}>
               <ProductCard
-                key={product._id}
                 name={product.name}
                 description={product.description}
                 price={product.price}

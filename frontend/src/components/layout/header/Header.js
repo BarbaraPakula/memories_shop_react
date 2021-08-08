@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 export const Header = () => {
   const classes = useStyles();
   const cart = useSelector((state) => state.cart);
-  console.log("mmm cart:", cart);
   const { cartItems } = cart;
   const getCartCount = () => {
     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
