@@ -3,11 +3,10 @@ import styles from "./Cartpage.scss";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import CheckoutButton from "../../common/checkoutButton/CheckoutButton";
+import Alert from "@material-ui/lab/Alert";
 
 // Components
 import CartItem from "../../common/CartItem/CartItem";
-
 // Actions
 import { addToCart, removeFromCart } from "../../../redux/cartReducer";
 
@@ -43,9 +42,9 @@ const Cart = () => {
         <h2>Shopping Cart</h2>
 
         {cartItems.length === 0 ? (
-          <div>
-            Your Cart Is Empty <Link to="/">Go Back</Link>
-          </div>
+          <Alert severity="info">
+            Your Cart Is Empty <Link to="/">Go Back to shop</Link>
+          </Alert>
         ) : (
           cartItems.map((item) => (
             <CartItem
@@ -67,7 +66,9 @@ const Cart = () => {
           <p>${getCartSubTotal()}</p>
         </div>
         <div>
-          <CheckoutButton />
+          <Link to="/order">
+            <button>Go to Order</button>
+          </Link>
         </div>
       </div>
     </div>

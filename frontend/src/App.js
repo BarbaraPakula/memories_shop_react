@@ -8,6 +8,7 @@ import Homepage from './components/views/homepage/Hompage';
 import ProductPage from './components/views/productpage/Productpage';
 import Cart from './components/views/cartpage/Cartpage';
 import MainLayout from './components/layout/mainLayout/MainLayout';
+import Order from './components/views/order/Order'
 
 const App = (props) => (
     <BrowserRouter>
@@ -16,6 +17,8 @@ const App = (props) => (
           <Route exact path={'/'} component={Homepage} />
           <Route exact path={'/product/:id'} component={ProductPage} />
           <Route exact path={'/cart'} component={Cart} />
+          <Route exact path={'/order'} component={Order} />
+
         </Switch>
       </MainLayout>
     </BrowserRouter>

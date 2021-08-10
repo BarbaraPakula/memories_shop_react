@@ -6,14 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
+import Alert from "@material-ui/lab/Alert";
 
 import { getProducts as listProducts } from "../../../redux/productReducer";
 const Homepage = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.getProducts);
   const { products, loading, error } = getProducts;
-  const [search, setSearch] = useState("");
   const [filterProducts, setFilterProducts] = useState([]);
+  const [search, setSearch] = useState("");
+  const [min, setMin] = useState(" ");
+  const [max, setMax] = useState("10000000");
 
   useEffect(() => {
     dispatch(listProducts());
@@ -21,11 +24,33 @@ const Homepage = () => {
 
   useEffect(() => {
     setFilterProducts(
-      products.filter((product) =>
-        product.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-      )
+      products.filter((product) => {
+        return (
+          product.name
+            .toLocaleLowerCase()
+            .includes(search.toLocaleLowerCase()) &&
+          product.price > min &&
+          product.price < max
+        );
+      })
     );
-  }, [products, search]);
+  }, [products, search, min, max]);
+
+  const handleFilterChange = (e, filterType) => {
+    switch (filterType) {
+      case "setSearch":
+        setSearch(e.target.value);
+        break;
+      case "SetMin":
+        setMin(e.target.value);
+        break;
+      case "SetMax":
+        setMax(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className={styles.homepage}>
@@ -34,7 +59,7 @@ const Homepage = () => {
           container
           spacing={1}
           alignItems="flex-end"
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => handleFilterChange(e, "setSearch")}
           value={search}
         >
           <Grid item>
@@ -44,6 +69,31 @@ const Homepage = () => {
             <TextField id="input-with-icon-grid" label="Search Products" />
           </Grid>
         </Grid>
+      </div>
+      <div>
+        <input
+          type="number"
+          min={0}
+          step={100}
+          name="minPrice"
+          onChange={(e) => handleFilterChange(e, "SetMin")}
+          placeholder="Min price"
+        ></input>
+        <input
+          min={0}
+          step={100}
+          type="number"
+          name="maxPrice"
+          onChange={(e) => handleFilterChange(e, "SetMax")}
+          placeholder="Max price"
+        ></input>
+          {filterProducts.length === 0 ? (
+        <Alert severity="warning">
+
+There are no products in the selected criteria. Please change your criteria        </Alert>
+      ) : (
+        ""
+      )}
       </div>
 
       <div className={styles.card}>
