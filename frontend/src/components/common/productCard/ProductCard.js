@@ -70,7 +70,9 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
         title={name}
         subheader=""
       />
+      <Link to={`/product/${productId}`}>
       <CardMedia className={classes.media} image={imageUrl} title="memories" />
+      </Link>
       <CardContent>
         <Typography>Price ${price}</Typography>
         <Link to={`/product/${productId}`}> Go to product page</Link>
