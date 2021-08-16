@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -19,7 +19,6 @@ import {
 
 import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
@@ -54,6 +53,15 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  const [color, setColor] = useState("");
+
+  const changeColor = () => {
+    if (!color) {
+      setColor("secondary");
+    } else {
+      setColor("");
+    }
+  };
   return (
     <Card className={classes.root}>
       <CardHeader
@@ -71,20 +79,28 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
         subheader=""
       />
       <Link to={`/product/${productId}`}>
-      <CardMedia className={classes.media} image={imageUrl} title="memories" />
+        <CardMedia
+          className={classes.media}
+          image={imageUrl}
+          title="memories"
+        />
       </Link>
       <CardContent>
         <Typography>Price ${price}</Typography>
-        <Link to={`/product/${productId}`}> Go to product page</Link>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
+        <IconButton
+          aria-label="add to favorites"
+          onClick={changeColor}
+          color={`${color}`}
+        >
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton aria-label="add to cart">
+        <IconButton
+          aria-label="add to cart"
+          component={Link}
+          to={`/product/${productId}`}
+        >
           <AddShoppingCartIcon />
         </IconButton>
         <IconButton

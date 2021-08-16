@@ -15,12 +15,14 @@ const Homepage = () => {
   const { products, loading, error } = getProducts;
   const [filterProducts, setFilterProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [min, setMin] = useState(" ");
-  const [max, setMax] = useState("10000000");
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("100000000");
 
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
+
+  console.log(products.length);
 
   useEffect(() => {
     setFilterProducts(
@@ -81,19 +83,21 @@ const Homepage = () => {
         ></input>
         <input
           min={0}
+          max={100000}
           step={100}
           type="number"
           name="maxPrice"
           onChange={(e) => handleFilterChange(e, "SetMax")}
           placeholder="Max price"
         ></input>
-          {filterProducts.length === 0 ? (
-        <Alert severity="warning">
-
-There are no products in the selected criteria. Please change your criteria        </Alert>
-      ) : (
-        ""
-      )}
+        {filterProducts.length === 0 ? (
+          <Alert severity="warning">
+            There are no products in the selected criteria. Please change your
+            criteria{" "}
+          </Alert>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className={styles.card}>

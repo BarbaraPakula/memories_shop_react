@@ -44,7 +44,9 @@ export const getProducts = () => async (dispatch) => {
   try {
     dispatch(getProductsReques());
 
-    const { data } = await axios.get("http://localhost:8000/api/products");
+    const { data } = await axios.get("http://localhost:8000/api/products", {
+      headers: { "Content-Type": "application/json" },
+    });
     dispatch(getProductsSuccess(data));
   } catch (error) {
     dispatch(

@@ -66,7 +66,7 @@ const Cart = () => {
           <p>${getCartSubTotal()}</p>
         </div>
         <div>
-          <Link to="/order">
+          <Link to="/orders">
             <button>Go to Order</button>
           </Link>
         </div>
