@@ -15,14 +15,16 @@ const Homepage = () => {
   const { products, loading, error } = getProducts;
   const [filterProducts, setFilterProducts] = useState([]);
   const [search, setSearch] = useState("");
-  const [min, setMin] = useState("");
-  const [max, setMax] = useState("100000000");
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(1000000000000);
 
   useEffect(() => {
     dispatch(listProducts());
   }, [dispatch]);
 
-  console.log(products.length);
+  let prices = products.map((product) => product.price);
+  let maxPrice = prices.reduce((a, b) => (a > b ? a : b), 0);
+  let minPrice = prices.reduce((a, b) => (a < b ? a : b), prices[0]);
 
   useEffect(() => {
     setFilterProducts(
@@ -31,8 +33,8 @@ const Homepage = () => {
           product.name
             .toLocaleLowerCase()
             .includes(search.toLocaleLowerCase()) &&
-          product.price > min &&
-          product.price < max
+          product.price >= min &&
+          product.price <= max
         );
       })
     );
@@ -53,6 +55,7 @@ const Homepage = () => {
         break;
     }
   };
+
 
   return (
     <div className={styles.homepage}>
@@ -79,8 +82,9 @@ const Homepage = () => {
           step={100}
           name="minPrice"
           onChange={(e) => handleFilterChange(e, "SetMin")}
-          placeholder="Min price"
+          placeholder={`Filter by min price (current min price in shop: ${minPrice})`}
         ></input>
+
         <input
           min={0}
           max={100000}
@@ -88,12 +92,13 @@ const Homepage = () => {
           type="number"
           name="maxPrice"
           onChange={(e) => handleFilterChange(e, "SetMax")}
-          placeholder="Max price"
+          placeholder={`Filter by max price (current max price in shop ${maxPrice})`}
         ></input>
-        {filterProducts.length === 0 ? (
-          <Alert severity="warning">
-            There are no products in the selected criteria. Please change your
-            criteria{" "}
+
+        {filterProducts.length !== products.length ? (
+          <Alert severity={filterProducts.length === 0 ? "warning" : "info"}>
+            We have currently {filterProducts.length} products in this criteria
+            in stock.
           </Alert>
         ) : (
           ""

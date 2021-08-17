@@ -53,13 +53,13 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState();
 
   const changeColor = () => {
     if (!color) {
       setColor("secondary");
     } else {
-      setColor("");
+      setColor("default");
     }
   };
   return (
@@ -92,7 +92,7 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
         <IconButton
           aria-label="add to favorites"
           onClick={changeColor}
-          color={`${color}`}
+          color={color}
         >
           <FavoriteIcon />
         </IconButton>
