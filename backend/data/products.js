@@ -32,7 +32,7 @@ const products = [
       'https://images.pexels.com/photos/4765691/pexels-photo-4765691.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
     description:
       'The more you praise and celebrate your life, the more there is in life to celebrate',
-    price: 50,
+    price: 500,
     countInStock: 25,
   },
   {
