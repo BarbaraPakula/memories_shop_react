@@ -36,7 +36,7 @@ export const Header = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="inherit">
+      <AppBar position="fixed" color="inherit">
         <Toolbar>
           <IconButton
             component={Link}

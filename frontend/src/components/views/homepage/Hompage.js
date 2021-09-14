@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Homepage.module.scss";
-import ProductCard from "../../common/productCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-
+// material ui
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import SearchIcon from "@material-ui/icons/Search";
 import Alert from "@material-ui/lab/Alert";
+//components
+import PriceRange from "../../common/PriceRange/PriceRange";
+import ProductCard from "../../common/productCard/ProductCard";
 
+//actions
 import { getProducts as listProducts } from "../../../redux/productReducer";
-const Homepage = () => {
+
+const Homepage = (maxi) => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.getProducts);
   const { products, loading, error } = getProducts;
@@ -40,61 +44,38 @@ const Homepage = () => {
     );
   }, [products, search, min, max]);
 
-  const handleFilterChange = (e, filterType) => {
-    switch (filterType) {
-      case "setSearch":
-        setSearch(e.target.value);
-        break;
-      case "SetMin":
-        setMin(e.target.value);
-        break;
-      case "SetMax":
-        setMax(e.target.value);
-        break;
-      default:
-        break;
-    }
+  const handleFilterChange = (e) => {
+    setSearch(e.target.value);
   };
-
 
   return (
     <div className={styles.homepage}>
       <div className={styles.search}>
         <Grid
+          justifyContent="center"
           container
           spacing={1}
           alignItems="flex-end"
-          onChange={(e) => handleFilterChange(e, "setSearch")}
+          onChange={handleFilterChange}
           value={search}
         >
           <Grid item>
             <SearchIcon />
           </Grid>
           <Grid item>
-            <TextField id="input-with-icon-grid" label="Search Products" />
+            <TextField id="input-with-icon-grid" label="Search by name" />
           </Grid>
+        </Grid>
+        <Grid justifyContent="center" container spacing={0} m={5}>
+          <PriceRange
+            maxPrice={maxPrice}
+            minPrice={minPrice}
+            setMax={setMax}
+            setMin={setMin}
+          />
         </Grid>
       </div>
       <div>
-        <input
-          type="number"
-          min={0}
-          step={100}
-          name="minPrice"
-          onChange={(e) => handleFilterChange(e, "SetMin")}
-          placeholder={`Filter by min price (current min price in shop: ${minPrice})`}
-        ></input>
-
-        <input
-          min={0}
-          max={100000}
-          step={100}
-          type="number"
-          name="maxPrice"
-          onChange={(e) => handleFilterChange(e, "SetMax")}
-          placeholder={`Filter by max price (current max price in shop ${maxPrice})`}
-        ></input>
-
         {filterProducts.length !== products.length ? (
           <Alert severity={filterProducts.length === 0 ? "warning" : "info"}>
             We have currently {filterProducts.length} products in this criteria
