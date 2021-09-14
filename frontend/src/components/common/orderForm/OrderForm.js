@@ -11,7 +11,6 @@ const OrderForm = ({ imageUrl }) => {
   const order = useSelector((state) => state.cart);
   const { cartItems } = order;
 
-  console.log(cartItems[0]);
   useEffect(() => {}, []);
 
   const getCartCount = () => {
@@ -44,7 +43,10 @@ const OrderForm = ({ imageUrl }) => {
       text,
       totalPrice: getCartSubTotal(),
       subtotalItems: getCartCount(),
-      orderDetails: cartItems.map((cartItem) =>( cartItem.name + " " + cartItem.qty)),
+      orderDetails: cartItems.map(
+        (cartItem) =>
+        cartItem.name + " " + cartItem.qty
+      ),
     };
 
     if (username && usersurname && email && phone) {
@@ -73,6 +75,7 @@ const OrderForm = ({ imageUrl }) => {
           ) : (
             cartItems.map((item) => (
               <input
+                readOnly
                 key={item.id}
                 value={item.name + " (" + item.qty + ") " + item.price + "$"}
               ></input>
@@ -81,8 +84,11 @@ const OrderForm = ({ imageUrl }) => {
 
           <div>
             <hr></hr>
-            <input value={`Subtotal items: ${getCartCount()}`}></input>
-            <input value={`Total Price $: ${getCartSubTotal()}`}></input>
+            <input readOnly value={`Subtotal items: ${getCartCount()}`}></input>
+            <input
+              readOnly
+              value={`Total Price $: ${getCartSubTotal()}`}
+            ></input>
           </div>
           <fieldset>
             <legend>Fill the form </legend>
@@ -133,7 +139,13 @@ const OrderForm = ({ imageUrl }) => {
             DPD
             <input type="radio" name="delivery_agency" value="FedEx" />
             FedEx
-            <input type="radio" name="delivery_agency" value="UPS" checked />
+            <input
+              type="radio"
+              name="delivery_agency"
+              value="UPS"
+              checked
+              readOnly
+            />
             UPS
           </fieldset>
 
