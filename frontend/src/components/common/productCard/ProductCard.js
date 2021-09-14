@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
