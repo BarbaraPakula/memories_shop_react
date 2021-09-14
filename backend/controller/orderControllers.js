@@ -23,8 +23,26 @@ const getOrderById = async (req, res) => {
 
 const addOrder = async (req, res) => {
   try {
-    const { username, usersurname, text, phone, email } = req.body;
-    const newOrder = new Order({ username, usersurname, text, phone, email });
+    const {
+      username,
+      usersurname,
+      text,
+      phone,
+      email,
+      totalPrice,
+      subtotalItems,
+      orderDetails,
+    } = req.body;
+    const newOrder = new Order({
+      username,
+      usersurname,
+      text,
+      phone,
+      email,
+      totalPrice,
+      subtotalItems,
+      orderDetails,
+    });
     await newOrder.save();
     console.log(newOrder);
     if (!newOrder) res.status(404).json({ post: 'Not found' });

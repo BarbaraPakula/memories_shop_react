@@ -1,0 +1,34 @@
+@import "../../../styles/settings.scss";
+
+section {
+  text-align: center;
+}
+input {
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  border: 1px solid rgb(21, 141, 91);
+  transition: 0.5s all;
+  background: inherit;
+}
+input:required {
+  border-color: rgba(255, 99, 71, 0.6);
+  outline-color: rgb(255, 99, 71);
+}
+input:optional {
+  border-color: rgba(85, 238, 112, 0.5);
+  outline-color: rgb(85, 238, 112);
+}
+button[type="submit"] {
+  height: 60px;
+  padding: 10px;
+  font-size: 2em;
+  text-shadow: 1px 1px 30px #666;
+}
+form {
+	background: #f8f8f8;
+	padding: 25px;
+	max-width: 500px;
+	margin: 40px auto;
+	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}

@@ -4,14 +4,14 @@ import styles from "./Order.module.scss";
 
 // Components
 import OrderForm from "../../common/orderForm/OrderForm";
-import CheckoutButton from "../../common/checkoutButton/CheckoutButton";
+// import CheckoutButton from "../../common/checkoutButton/CheckoutButton";
 
 function Order(props) {
   return (
     <div className={styles.order}>
       <OrderForm />
 
-      <CheckoutButton />
+      {/* <CheckoutButton /> */}
     </div>
   );
 }

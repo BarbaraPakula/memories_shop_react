@@ -20,6 +20,18 @@ const orderSchema = mongoose.Schema({
   text: {
     type: String,
   },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  subtotalItems: {
+    type: Number,
+    required: true,
+  },
+  orderDetails: {
+    type: Array,
+    required: true,
+  },
 });
 
 const Order = mongoose.model('order', orderSchema);
