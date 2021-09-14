@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./ProductCard.module.scss";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -53,14 +53,10 @@ const ProductCard = ({ imageUrl, description, price, name, productId }) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  const [color, setColor] = useState();
+  const [color, setColor] = useState("default");
 
   const changeColor = () => {
-    if (!color) {
-      setColor("secondary");
-    } else {
-      setColor("default");
-    }
+    color !== "default" ? setColor("default") : setColor("secondary");
   };
   return (
     <Card className={classes.root}>

@@ -1,12 +1,17 @@
+@import "../../../styles/settings.scss";
 
+.order {
+  text-align: center;
+  margin: 0 auto;
+  background-color: $base-pink-color;
+}
 .order div button {
-    padding: 10px 17px;
-    width: 100%;
-    background: #171717;
-    color: #f4f4f4;
-    cursor: pointer;
-  }
+  width: 80%;
+  background: #171717;
+  color: #f4f4f4;
+  cursor: pointer;
+}
 
-  .order div button:hover {
-    opacity: 0.9;
-  }
+.order div button:hover {
+  opacity: 0.8;
+}
