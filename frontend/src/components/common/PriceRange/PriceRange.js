@@ -22,7 +22,6 @@ const RangeSlider = ({ maxPrice, minPrice, setMax, setMin }) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log(newValue);
     setMax(newValue[1]);
     setMin(newValue[0]);
   };

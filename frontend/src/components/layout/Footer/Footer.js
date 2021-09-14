@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useSelector } from "react-redux";
 
 import { makeStyles } from "@material-ui/core/styles";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-} from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,12 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 export const Footer = () => {
   const classes = useStyles();
-  // const cart = useSelector((state) => state.cart);
-  // const { cartItems } = cart;
-  // const getCartCount = () => {
-  //   return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
-  // };
-
   return (
     <div className={classes.root}>
       <AppBar position="sticky" color="inherit">

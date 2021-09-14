@@ -34,7 +34,7 @@ const CheckoutButton = () => {
             });
         }}
       >
-        Checkout: go to payments and bring smile to my face
+        Checkout: go to payments. Prepare your credit card
       </button>
     </div>
   );

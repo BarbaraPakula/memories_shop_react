@@ -46,10 +46,6 @@ const Productpage = ({ match, history }) => {
           <div className={styles.productpage__right}>
             <div className={styles.right__info}>
               <p>
-                Price:
-                <span>${product.price}</span>
-              </p>
-              <p>
                 Status:
                 <span>
                   {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
