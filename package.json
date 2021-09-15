@@ -4,12 +4,10 @@
   "description": "",
   "proxy": "http://127.0.0.1:3000",
   "main": "server.js",
-  "homepage": "https://barbarapakula.github.io/memories_shop_react/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
+    "build": "cd frontend && yarn install && yarn build",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node backend/seederScript"
