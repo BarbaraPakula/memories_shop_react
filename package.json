@@ -27,7 +27,6 @@
     "express": "^4.17.1",
     "gh-pages": "^3.2.3",
     "http-proxy-middleware": "^2.0.1",
-    "husky": "^7.0.1",
     "mongoose": "^5.13.5",
     "node-sass": "^6.0.1",
     "react-hook-form": "^7.12.2",
