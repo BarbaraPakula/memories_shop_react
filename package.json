@@ -4,7 +4,10 @@
   "description": "",
   "proxy": "http://127.0.0.1:3000",
   "main": "server.js",
+  "homepage": "https://barbarapakula.github.io/memories_shop_react/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
@@ -26,6 +29,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "gh-pages": "^3.2.3",
     "http-proxy-middleware": "^2.0.1",
     "husky": "^7.0.1",
     "mongoose": "^5.13.5",
