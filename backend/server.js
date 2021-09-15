@@ -62,6 +62,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
 /* REACT WEBSITE */
 app.use(express.static(path.join(__dirname, '../frontend/build')));
-
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frondend/build/index.html'));
+});
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
