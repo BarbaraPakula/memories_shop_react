@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/memories_shop_react/static/css/main.7483768d.chunk.css",
+    "main.js": "/memories_shop_react/static/js/main.7a28f2fc.chunk.js",
+    "main.js.map": "/memories_shop_react/static/js/main.7a28f2fc.chunk.js.map",
+    "runtime-main.js": "/memories_shop_react/static/js/runtime-main.f84f00bb.js",
+    "runtime-main.js.map": "/memories_shop_react/static/js/runtime-main.f84f00bb.js.map",
+    "static/js/2.609b6959.chunk.js": "/memories_shop_react/static/js/2.609b6959.chunk.js",
+    "static/js/2.609b6959.chunk.js.map": "/memories_shop_react/static/js/2.609b6959.chunk.js.map",
+    "static/js/3.2105cef6.chunk.js": "/memories_shop_react/static/js/3.2105cef6.chunk.js",
+    "static/js/3.2105cef6.chunk.js.map": "/memories_shop_react/static/js/3.2105cef6.chunk.js.map",
+    "index.html": "/memories_shop_react/index.html",
+    "static/css/main.7483768d.chunk.css.map": "/memories_shop_react/static/css/main.7483768d.chunk.css.map",
+    "static/js/2.609b6959.chunk.js.LICENSE.txt": "/memories_shop_react/static/js/2.609b6959.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f84f00bb.js",
+    "static/js/2.609b6959.chunk.js",
+    "static/css/main.7483768d.chunk.css",
+    "static/js/main.7a28f2fc.chunk.js"
+  ]
+}
